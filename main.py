@@ -41,10 +41,9 @@ async def root(start_date: datetime = start):
     return {"start_date": start_date}
 
 
-@app.post("/create")
+@app.post("/mahasiswa")
 async def create(data: Request, db: Session = Depends(get_db_mahasiswa)):
     req = await data.json()
-
     db_data = DataMahasiswa(
         nama=req['nama'],
         kelas=req['kelas']
@@ -57,17 +56,17 @@ async def create(data: Request, db: Session = Depends(get_db_mahasiswa)):
     }
 
 
-@app.get("/read")
+@app.get("/mahasiswa")
 def read_root(db: Session = Depends(get_db_mahasiswa)):
     return db.query(DataMahasiswa).all()
 
 
-@app.get("/edit/{id}")
+@app.get("/mahasiswa/{id}")
 def read_root(id: int, db: Session = Depends(get_db_mahasiswa)):
     return db.query(DataMahasiswa).get(id)
 
 
-@app.put("/update/{id}")
+@app.put("/mahasiswa/{id}")
 async def read_root(id: int, data: Request, db: Session = Depends(get_db_mahasiswa)):
     req = await data.json()
     get_data = db.query(DataMahasiswa).get(id)
@@ -83,7 +82,7 @@ async def read_root(id: int, data: Request, db: Session = Depends(get_db_mahasis
     }
 
 
-@app.delete("/delete/{id}")
+@app.delete("/mahasiswa/{id}")
 async def read_root(id: int, db: Session = Depends(get_db_mahasiswa)):
     get_data = db.query(DataMahasiswa).get(id)
     if get_data:

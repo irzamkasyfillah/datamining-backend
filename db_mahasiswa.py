@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Table, MetaData, Column, Integer, String, 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "mysql://root:@localhost:3306/tuberkulosis"
+SQLALCHEMY_DATABASE_URL = "mysql://bb3600aabdf663:8b79a477@us-cdbr-east-06.cleardb.net/heroku_61b6ab945069486"
 
 metadata = MetaData()
 
@@ -13,7 +13,7 @@ data = Table(
     Column("nama", String(255)),
     Column("kelas", String(255))
 )
-
+ 
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
