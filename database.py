@@ -45,8 +45,11 @@ data = Table(
 )
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL
+    SQLALCHEMY_DATABASE_URL,
+    connect_args={'connect_timeout': 120},
+    pool_pre_ping=True
 )
+
 metadata.create_all(engine)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
